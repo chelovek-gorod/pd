@@ -1,0 +1,63 @@
+{
+  "frames": {
+    "rocket_engine": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 163,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 163,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 282,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "rocket_head": {
+      "frame": {
+        "x": 4,
+        "y": 104,
+        "w": 151,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 129,
+        "y": 15,
+        "w": 151,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 282,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "rocket.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 171,
+      "h": 171
+    },
+    "scale": 1
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "frames": {
+    "base": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 260,
+        "h": 146
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 49,
+        "w": 260,
+        "h": 146
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "gun-radar": {
+      "frame": {
+        "x": 4,
+        "y": 158,
+        "w": 118,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 65,
+        "y": 3,
+        "w": 118,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "gun-tesla": {
+      "frame": {
+        "x": 130,
+        "y": 158,
+        "w": 91,
+        "h": 130
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 79,
+        "y": 10,
+        "w": 91,
+        "h": 130
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "gun-prisma": {
+      "frame": {
+        "x": 229,
+        "y": 158,
+        "w": 60,
+        "h": 110
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 103,
+        "y": 19,
+        "w": 60,
+        "h": 110
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "gun-rocketer": {
+      "frame": {
+        "x": 4,
+        "y": 286,
+        "w": 90,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 82,
+        "y": 18,
+        "w": 90,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "range_4": {
+      "frame": {
+        "x": 229,
+        "y": 276,
+        "w": 39,
+        "h": 82
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 180,
+        "y": 116,
+        "w": 39,
+        "h": 82
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "gun-sparks": {
+      "frame": {
+        "x": 102,
+        "y": 296,
+        "w": 86,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 87,
+        "y": 31,
+        "w": 86,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "range_3": {
+      "frame": {
+        "x": 196,
+        "y": 366,
+        "w": 33,
+        "h": 54
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 183,
+        "y": 116,
+        "w": 33,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "range_2": {
+      "frame": {
+        "x": 237,
+        "y": 366,
+        "w": 33,
+        "h": 39
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 183,
+        "y": 116,
+        "w": 33,
+        "h": 39
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "range_1": {
+      "frame": {
+        "x": 237,
+        "y": 413,
+        "w": 33,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 183,
+        "y": 116,
+        "w": 33,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 268,
+        "h": 220
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "guns.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 293,
+      "h": 441
+    },
+    "scale": 1
+  }
+}
