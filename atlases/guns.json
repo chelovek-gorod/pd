@@ -4,20 +4,20 @@
       "frame": {
         "x": 4,
         "y": 4,
-        "w": 260,
-        "h": 146
+        "w": 164,
+        "h": 92
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1,
+        "x": 0,
         "y": 49,
-        "w": 260,
-        "h": 146
+        "w": 164,
+        "h": 92
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -27,21 +27,21 @@
     "gun-radar": {
       "frame": {
         "x": 4,
-        "y": 158,
-        "w": 118,
-        "h": 120
+        "y": 104,
+        "w": 76,
+        "h": 77
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 65,
-        "y": 3,
-        "w": 118,
-        "h": 120
+        "x": 38,
+        "y": 18,
+        "w": 76,
+        "h": 77
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -50,22 +50,22 @@
     },
     "gun-tesla": {
       "frame": {
-        "x": 130,
-        "y": 158,
-        "w": 91,
-        "h": 130
+        "x": 88,
+        "y": 104,
+        "w": 50,
+        "h": 73
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 79,
-        "y": 10,
-        "w": 91,
-        "h": 130
+        "x": 58,
+        "y": 21,
+        "w": 50,
+        "h": 73
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -74,22 +74,22 @@
     },
     "gun-prisma": {
       "frame": {
-        "x": 229,
-        "y": 158,
-        "w": 60,
-        "h": 110
+        "x": 146,
+        "y": 104,
+        "w": 39,
+        "h": 70
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 103,
-        "y": 19,
-        "w": 60,
-        "h": 110
+        "x": 63,
+        "y": 27,
+        "w": 39,
+        "h": 70
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -98,22 +98,22 @@
     },
     "gun-rocketer": {
       "frame": {
-        "x": 4,
-        "y": 286,
-        "w": 90,
-        "h": 104
+        "x": 193,
+        "y": 104,
+        "w": 59,
+        "h": 68
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 82,
-        "y": 18,
-        "w": 90,
-        "h": 104
+        "x": 50,
+        "y": 25,
+        "w": 59,
+        "h": 68
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -122,22 +122,22 @@
     },
     "range_4": {
       "frame": {
-        "x": 229,
-        "y": 276,
-        "w": 39,
-        "h": 82
+        "x": 260,
+        "y": 104,
+        "w": 26,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 116,
-        "w": 39,
-        "h": 82
+        "x": 111,
+        "y": 88,
+        "w": 26,
+        "h": 58
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -146,70 +146,22 @@
     },
     "gun-sparks": {
       "frame": {
-        "x": 102,
-        "y": 296,
-        "w": 86,
-        "h": 90
+        "x": 176,
+        "y": 4,
+        "w": 56,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 87,
-        "y": 31,
-        "w": 86,
-        "h": 90
+        "x": 55,
+        "y": 36,
+        "w": 56,
+        "h": 58
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "range_3": {
-      "frame": {
-        "x": 196,
-        "y": 366,
-        "w": 33,
-        "h": 54
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 183,
-        "y": 116,
-        "w": 33,
-        "h": 54
-      },
-      "sourceSize": {
-        "w": 268,
-        "h": 220
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "range_2": {
-      "frame": {
-        "x": 237,
-        "y": 366,
-        "w": 33,
-        "h": 39
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 183,
-        "y": 116,
-        "w": 33,
-        "h": 39
-      },
-      "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -218,22 +170,70 @@
     },
     "range_1": {
       "frame": {
-        "x": 237,
-        "y": 413,
-        "w": 33,
-        "h": 24
+        "x": 240,
+        "y": 4,
+        "w": 22,
+        "h": 42
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 183,
-        "y": 116,
-        "w": 33,
-        "h": 24
+        "x": 113,
+        "y": 93,
+        "w": 22,
+        "h": 42
       },
       "sourceSize": {
-        "w": 268,
-        "h": 220
+        "w": 166,
+        "h": 166
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "range_3": {
+      "frame": {
+        "x": 270,
+        "y": 4,
+        "w": 22,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 113,
+        "y": 93,
+        "w": 22,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 166,
+        "h": 166
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "range_2": {
+      "frame": {
+        "x": 270,
+        "y": 48,
+        "w": 22,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 113,
+        "y": 88,
+        "w": 22,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 166,
+        "h": 166
       },
       "pivot": {
         "x": 0.5,
@@ -247,8 +247,8 @@
     "image": "guns.png",
     "format": "RGBA8888",
     "size": {
-      "w": 293,
-      "h": 441
+      "w": 296,
+      "h": 185
     },
     "scale": 1
   }
