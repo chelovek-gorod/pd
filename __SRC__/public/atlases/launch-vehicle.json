@@ -1,0 +1,61 @@
+{
+  "frames": {
+    "body": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 219,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 0,
+        "w": 219,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 300,
+        "h": 72
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "head": {
+      "frame": {
+        "x": 231,
+        "y": 4,
+        "w": 114,
+        "h": 53
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 9,
+        "w": 114,
+        "h": 53
+      },
+      "sourceSize": {
+        "w": 300,
+        "h": 72
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "image": "launch-vehicle.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 349,
+      "h": 80
+    },
+    "scale": 1
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "frames": {
+    "4": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 26,
+        "h": 53
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 26,
+        "h": 53
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 54
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "3": {
+      "frame": {
+        "x": 4,
+        "y": 65,
+        "w": 22,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 22,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 54
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "2": {
+      "frame": {
+        "x": 4,
+        "y": 109,
+        "w": 22,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 22,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 54
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "1": {
+      "frame": {
+        "x": 4,
+        "y": 143,
+        "w": 22,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 22,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 54
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "gun_range.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 34,
+      "h": 167
+    },
+    "scale": 1
+  }
+}
