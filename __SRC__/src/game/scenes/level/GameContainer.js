@@ -7,6 +7,7 @@ import { ORBIT_A, ORBIT_B, ORBIT_LINE } from './constants'
 import Earth from "./Earth";
 import Asteroid from "./Enemies/Asteroid";
 import { images } from "../../../app/assets";
+import Mine from "./Guns/Mine";
 
 const STATE = createEnum([
     'MAX',
@@ -18,22 +19,6 @@ const STATE = createEnum([
 export default class GameContainer extends Container {
     constructor() {
         super()
-
-        // test
-        this.target = new Sprite(images.target)
-        this.target.anchor.set(0.5)
-        this.addChild(this.target)
-
-        document.addEventListener('keydown', (event) => {
-            const speed = 5
-            switch(event.key) {
-                case "ArrowLeft": this.target.x -= speed; break;
-                case "ArrowRight": this.target.x += speed; break;
-                case "ArrowUp": this.target.y -= speed; break;
-                case "ArrowDown": this.target.y += speed; break;
-            }
-        })
-        // end test
 
         this.minScale = 1
         this.maxScale = 1
@@ -72,11 +57,13 @@ export default class GameContainer extends Container {
         this.earth = new Earth()
         this.planet.addChild(this.earth)
 
-        setInterval( ()=> {
-            const pathData = ENEMY_PATHS_MAX[6]
+        /*
+        setTimeout( ()=> {
+            const pathData = ENEMY_PATHS_MIN[4]
             const asteroid = new Asteroid(pathData)
             this.enemies.addChild( asteroid )          
         }, 3000)
+        */
 
         this.handleWheel = this.handleWheel.bind(this)
         this.eventMode = 'static'

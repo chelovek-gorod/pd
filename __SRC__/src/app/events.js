@@ -11,6 +11,7 @@ export const events = {
     showGunMenu: 'showGunMenu',
     hideGunMenu: 'hideGunMenu',
     setGun: 'setGun',
+    setMine: 'setMine',
     launchVehicle: 'launchVehicle',
 }
 
@@ -36,4 +37,7 @@ export function launchVehicle( satellite ) {
 }
 export function setGun( type ) {
     EventHub.emit( events.setGun, type )
+}
+export function setMine() {
+    EventHub.emit( events.setMine )
 }

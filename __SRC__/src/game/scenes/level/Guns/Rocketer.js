@@ -9,17 +9,22 @@ const DATA = {
     shutTimeout: 200,
 }
 
-const DtoR = 180 / Math.PI
-
 const FRAMES = 24
 const _2PI = Math.PI * 2
 const TURN_A = _2PI / FRAMES
 const FRAME_ANGLES = []
 for (let i = 0; i < FRAMES; i++) FRAME_ANGLES.push((i * TURN_A) % _2PI)
 
+let level = 3
+function getLevel() {
+    level++
+    if (level > 3) level = 1
+    return level
+}
+
 export default class Rocketer extends AnimatedSprite {
     constructor(enemies) {
-        super(atlases.gun_rocketer.animations.rotation)
+        super(atlases.gun_rocketer.animations[getLevel()])
         this.anchor.set(0.5)
         this.currentFrame = 0
 
@@ -64,10 +69,7 @@ export default class Rocketer extends AnimatedSprite {
         const dx = this.targetEnemy.x - this.parent.x
         const dy = this.targetEnemy.y - this.parent.y
 
-        // 0 — вправо, 90° — вниз (как нуждается анимация)
         const angle = Math.atan2(dy, dx)
-
-        // нормализация
         const normalized = (angle + _2PI) % _2PI
 
         const targetFrame = Math.round(normalized / TURN_A) % FRAMES

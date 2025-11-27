@@ -1,14 +1,15 @@
-import { AnimatedSprite, Container, Sprite } from 'pixi.js'
-import { atlases, images, music } from '../../../app/assets'
+import { Container } from 'pixi.js'
+import { images, music } from '../../../app/assets'
 import { setMusic } from '../../../app/sound'
 import LevelBackground from './LevelBackground'
-import Satellite from './Guns/Satellite'
+import Base from './Guns/Base'
 import { ORBIT_A, ORBIT_B } from './constants'
 import GameContainer from './GameContainer'
 import Button from '../../UI/Button'
 import LaunchVehicle from './Guns/LaunchVehicle'
 import GunMenu from './UI/GunMenu'
-import { EventHub, events } from '../../../app/events'
+import { EventHub, events, setMine } from '../../../app/events'
+import MinesController from './MinesController'
 
 export default class Level extends Container {
     constructor() {
@@ -22,10 +23,12 @@ export default class Level extends Container {
         this.gameContainer = new GameContainer()
         this.addChild(this.gameContainer)
 
+        this.minesController = new MinesController(this.gameContainer.shells)
+
         const countA = 5
-        for(let i = 0; i < countA; i++) this.gameContainer.guns.addChild( new Satellite(ORBIT_A, countA, i) )
+        for(let i = 0; i < countA; i++) this.gameContainer.guns.addChild( new Base(ORBIT_A, countA, i) )
         const countB = 9
-        for(let i = 0; i < countB; i++) this.gameContainer.guns.addChild( new Satellite(ORBIT_B, countB, i) )
+        for(let i = 0; i < countB; i++) this.gameContainer.guns.addChild( new Base(ORBIT_B, countB, i) )
 
         this.btn_add = new Button(images.button_add, '', this.scaleAdd.bind(this))
         this.btn_add.scale.set(0.5)
@@ -34,6 +37,11 @@ export default class Level extends Container {
         this.btn_sub.scale.set(0.5)
 
         this.addChild(this.btn_add, this.btn_sub)
+
+        this.btn_mine = new Button(images.button_gun_spider, '', this.addMine.bind(this))
+        this.btn_mine.scale.set(0.5)
+
+        this.addChild(this.btn_add, this.btn_sub, this.btn_mine)
 
         this.gunMenu = new GunMenu()
         this.gunMenu.scale.set(0)
@@ -61,6 +69,7 @@ export default class Level extends Container {
         // UI
         this.btn_add.position.set(-screenData.centerX + 50, -screenData.centerY + 50)
         this.btn_sub.position.set(-screenData.centerX + 50, -screenData.centerY + 100)
+        this.btn_mine.position.set(screenData.centerX - 50, screenData.centerY - 50)
     }
 
     showGunMenu() {
@@ -78,6 +87,10 @@ export default class Level extends Container {
         this.gameContainer.zoomOut()
     }
 
+    addMine() {
+        setMine()
+    }
+
     launchVehicle(satellite) {
         this.gameContainer.planet.addChild( new LaunchVehicle(satellite) )
     }
@@ -86,5 +99,6 @@ export default class Level extends Container {
         EventHub.off( events.showGunMenu, this.showGunMenu, this )
         EventHub.off( events.hideGunMenu, this.hideGunMenu, this )
         EventHub.off( events.launchVehicle, this.launchVehicle, this )
+        this.minesController.kill()
     }
 }

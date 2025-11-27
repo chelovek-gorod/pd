@@ -43,6 +43,7 @@ export const images = {
     button_gun_rocketer: 'UI_BUTTON_gun_rocketer.png',
     button_gun_tesla: 'UI_BUTTON_gun_tesla.png',
     button_gun_prisma: 'UI_BUTTON_gun_prisma.png',
+    button_gun_spider: 'UI_BUTTON_gun_spider.png',
 
     sun_red: 'sun_red_580x580px.png',
     dp_filter: 'dpf_4.png', // 1, 4, 
@@ -52,6 +53,8 @@ export const atlases = {
 
     launch_vehicle: 'launch-vehicle.json',
     fire: 'fire.json',
+    smoke: 'smoke.json',
+    smoke_192: 'smoke_192.json',
 
     asteroid: 'asteroid.json',
     asteroid_rock: 'asteroid_rock.json',

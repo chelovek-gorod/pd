@@ -15,11 +15,11 @@ export default class Asteroid extends AnimatedSprite {
         this.path = pathData.path
         this.pathSize = pathData.points
 
-        this.destroyIndex = this.pathSize * 0.7 + Math.floor(Math.random() * this.pathSize)
+        this.destroyIndex = this.pathSize + 100 // this.pathSize * 0.7 + Math.floor(Math.random() * this.pathSize)
         
         this.pathIndex = 0
         this.pathFraction = 0
-        this.speed = 0.05 + Math.random() * 0.05
+        this.speed = 0.2 + Math.random() * 0.05
         this.lastScale = null
         this.isOnStart = true
         
@@ -36,21 +36,6 @@ export default class Asteroid extends AnimatedSprite {
         this.rotation = this.path[baseIndex + 3]
     }
 
-    acceleration(deltaMS) { 
-        const movement = this.lastScale * this.speed * deltaMS + this.pathFraction
-        const path = Math.floor(movement)
-        this.pathFraction = movement - path
-        this.pathIndex += path
-        if (this.lastScale > 0.995 ) this.isOnStart = false
-    }
-
-    move(deltaMS) {
-        const movement = this.speed * deltaMS + this.pathFraction
-        const path = Math.floor(movement)
-        this.pathFraction = movement - path
-        this.pathIndex += path
-    }
-
     explosion() {
         const rocksCount = 5
         const angleStep = (Math.PI + Math.PI) / rocksCount
@@ -64,10 +49,25 @@ export default class Asteroid extends AnimatedSprite {
     }
 
     tick(time) {
-        if (this.isOnStart) this.acceleration(time.deltaMS)
-        else this.move(time.deltaMS)
+        const prevIndex = this.pathIndex
+
+        const movement = this.speed * time.deltaMS + this.pathFraction
+        const path = Math.floor(movement)
+        this.pathFraction = movement - path
+        this.pathIndex += path
 
         this.updatePosition()
+
+        // Отладочная информация
+    if (prevIndex !== this.pathIndex) {
+        const prevX = this.path[prevIndex * 4]
+        const prevY = this.path[prevIndex * 4 + 1]
+        const currX = this.path[this.pathIndex * 4]
+        const currY = this.path[this.pathIndex * 4 + 1]
+        const distance = Math.sqrt((currX - prevX) ** 2 + (currY - prevY) ** 2)
+        console.log(`Пройдено точек: ${this.pathIndex - prevIndex}, расстояние: ${distance.toFixed(2)}`)
+    }
+
 
         if (this.pathIndex >= this.pathSize) return kill(this)
         if (this.pathIndex >= this.destroyIndex) return this.explosion()
