@@ -37,7 +37,7 @@ export default class Mine extends AnimatedSprite {
         this.targetPosition = targetPosition
         
         if (this.targetPosition === null) {
-            this.targetSpeedMultiplier = 1  // ← Ставим ЦЕЛЬ для плавного изменения
+            this.targetSpeedMultiplier = 1
             return
         }
         
@@ -47,7 +47,7 @@ export default class Mine extends AnimatedSprite {
         const maxDistance = this.orbitPathSize * 0.75
         const maxSpeedMultiplier = 3.0
         const distanceRatio = Math.min(diff / maxDistance, 1.0)
-        this.targetSpeedMultiplier = 1 + (maxSpeedMultiplier - 1) * distanceRatio  // ← Ставим ЦЕЛЬ
+        this.targetSpeedMultiplier = 1 + (maxSpeedMultiplier - 1) * distanceRatio
     }
 
     applyPosition() {
@@ -55,6 +55,17 @@ export default class Mine extends AnimatedSprite {
         const pathIndex = index * 4
         this.position.set(this.orbitPath[pathIndex], this.orbitPath[pathIndex + 1])
         this.scale.set(this.orbitPath[pathIndex + 2])
+    }
+
+    // НОВЫЙ МЕТОД - корректная круговая проверка достижения цели
+    checkCircularReach(current, next, target) {
+        if (current <= next) {
+            // Обычный случай - движемся вперед без перехода через 0
+            return target >= current && target <= next
+        } else {
+            // Переход через 0 - цель может быть в начале или конце
+            return target >= current || target <= next
+        }
     }
 
     tick(time) {
@@ -75,10 +86,10 @@ export default class Mine extends AnimatedSprite {
             let diff = this.targetPosition - this.orbitIndex
             if (diff < 0) diff += this.orbitPathSize
             
-            const brakingDistance = this.orbitPathSize * 0.1 // 10% орбиты для торможения
+            const brakingDistance = this.orbitPathSize * 0.1
             if (diff < brakingDistance) {
                 const brakeRatio = diff / brakingDistance
-                this.targetSpeedMultiplier = 1 + (3.0 - 1) * brakeRatio // Плавно снижаем скорость к 1
+                this.targetSpeedMultiplier = 1 + (3.0 - 1) * brakeRatio
             }
         }
     
@@ -95,9 +106,8 @@ export default class Mine extends AnimatedSprite {
             const nextOrbitIndex = this.orbitIndex + minePath
             const targetIndex = Math.floor(this.targetPosition)
             
-            const hasReached = (nextOrbitIndex >= this.orbitIndex) ?
-                (targetIndex >= this.orbitIndex && targetIndex <= nextOrbitIndex) :
-                (targetIndex >= this.orbitIndex || targetIndex <= nextOrbitIndex)
+            // ИСПРАВЛЕННАЯ ПРОВЕРКА - используем круговую логику
+            const hasReached = this.checkCircularReach(this.orbitIndex, nextOrbitIndex, targetIndex)
     
             if (hasReached) {
                 // Достигли цели

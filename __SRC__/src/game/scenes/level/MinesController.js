@@ -14,12 +14,28 @@ export default class MinesController {
         this.orbitOffset = 0
         this.basePointIndexes = []
         this.currentAssignIndex = 0
-        this.optimalAssignment = [] 
+        this.optimalAssignment = []
 
-        for(let i = 0; i < startMinesCount; i++) this.addMine()
+        // Создаем стартовые мины сразу в правильных позициях
+        if (startMinesCount > 0) {
+            this.createInitialMines(startMinesCount)
+            tickerAdd(this)
+        }
 
         EventHub.on(events.setMine, this.addMine, this)
-        tickerAdd(this)
+    }
+
+    createInitialMines(count) {
+        const step = this.orbitPathSize / count
+        
+        for (let i = 0; i < count; i++) {
+            const orbitIndex = Math.floor(i * step)
+            const newMine = new Mine(orbitIndex, this.removeMine.bind(this))
+            this.mines.push(newMine)
+            this.shellsContainer.addChild(newMine)
+        }
+        
+        this.redistributePositions()
     }
 
     addMine() {
@@ -33,12 +49,18 @@ export default class MinesController {
 
     onMineArrived(x, y) {
         const orbitIndex = this.findNearestOrbitIndex(x, y)
+        const hadMinesBefore = this.mines.length > 0
 
         for(let i = 0; i < 3; i++) {
             const currentOrbitIndex = (orbitIndex + i * 5) % this.orbitPathSize
             const newMine = new Mine(currentOrbitIndex, this.removeMine.bind(this))
             this.mines.push(newMine)
             this.shellsContainer.addChild(newMine)
+        }
+        
+        // Если мин не было до прибытия - запускаем тикер
+        if (!hadMinesBefore) {
+            tickerAdd(this)
         }
         
         this.redistributePositions()
@@ -76,20 +98,31 @@ export default class MinesController {
 
     redistributePositions() {
         this.currentAssignIndex = 0
+        
         if (this.mines.length === 0) {
             this.basePointIndexes = []
             this.optimalAssignment = []
+            tickerRemove(this) // Останавливаем тикер когда мин нет
             return
         }
-    
+
         const step = this.orbitPathSize / this.mines.length
         this.basePointIndexes = []
         
-        for (let i = 0; i < this.mines.length; i++) {
-            this.basePointIndexes.push(Math.floor(i * step))
+        // Определяем точку отсчета
+        let startIndex
+        if (this.mines.length === 1) {
+            startIndex = this.mines[0].orbitIndex // Первая/единственная мина
+        } else {
+            startIndex = this.mines[this.mines.length - 1].orbitIndex // Последняя прибывшая мина
         }
         
-        // ВЫЧИСЛЯЕМ ОПТИМАЛЬНОЕ СОПОСТАВЛЕНИЕ ОДИН РАЗ
+        // Создаем целевые позиции относительно точки отсчета
+        for (let i = 0; i < this.mines.length; i++) {
+            const targetIndex = (startIndex + Math.floor(i * step)) % this.orbitPathSize
+            this.basePointIndexes.push(targetIndex)
+        }
+        
         this.optimalAssignment = this.findOptimalAssignment()
     }
     
@@ -97,7 +130,6 @@ export default class MinesController {
         const assignment = []
         const usedTargets = new Set()
         
-        // Для каждой мины находим ближайшую свободную цель
         for (const mine of this.mines) {
             let bestTarget = null
             let bestDistance = Infinity
@@ -141,7 +173,9 @@ export default class MinesController {
 
     tick(time) {
         this.orbitOffset = (this.orbitOffset + this.orbitSpeed * time.deltaMS) % this.orbitPathSize
-        if (this.currentAssignIndex < this.optimalAssignment.length) this.assignTargets()
+        if (this.currentAssignIndex < this.optimalAssignment.length) {
+            this.assignTargets()
+        }
     }
 
     kill() {
@@ -152,5 +186,6 @@ export default class MinesController {
         this.mines = []
         this.basePointIndexes = []
         this.currentAssignIndex = 0
+        this.optimalAssignment = []
     }
 }
