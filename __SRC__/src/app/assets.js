@@ -31,6 +31,7 @@ export const images = {
     space_bg: 'space_bg_tile.jpg',
     earth_smoke: 'earth_smoke.png',
 
+    base_touch: 'base_touch.png',
     gun_highlight: 'gun_highlight.png',
     rocket: 'rocket.png',
 

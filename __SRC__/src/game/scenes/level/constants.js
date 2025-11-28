@@ -31,7 +31,7 @@ export const ORBIT_A = {
     launchPath: null,
 }
 export const ORBIT_mines = {
-    radius: 270,
+    radius: 280,
     pathSize: 0,
     path: null,
     speed: 0.05,

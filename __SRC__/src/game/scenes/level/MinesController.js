@@ -14,6 +14,7 @@ export default class MinesController {
         this.orbitOffset = 0
         this.basePointIndexes = []
         this.currentAssignIndex = 0
+        this.optimalAssignment = [] 
 
         for(let i = 0; i < startMinesCount; i++) this.addMine()
 
@@ -77,41 +78,70 @@ export default class MinesController {
         this.currentAssignIndex = 0
         if (this.mines.length === 0) {
             this.basePointIndexes = []
+            this.optimalAssignment = []
             return
         }
-
+    
         const step = this.orbitPathSize / this.mines.length
         this.basePointIndexes = []
         
         for (let i = 0; i < this.mines.length; i++) {
-            this.basePointIndexes.push(Math.ceil(i * step))
+            this.basePointIndexes.push(Math.floor(i * step))
         }
-    }
-
-    assignTargets() {
-        const sortedMines = this.mines.slice().sort((a, b) => {
-            const posA = (a.orbitIndex + this.orbitOffset) % this.orbitPathSize
-            const posB = (b.orbitIndex + this.orbitOffset) % this.orbitPathSize
-            return posA - posB
-        })
-
-        const sortedTargets = this.basePointIndexes.slice().sort((a, b) => {
-            const posA = (a + this.orbitOffset) % this.orbitPathSize
-            const posB = (b + this.orbitOffset) % this.orbitPathSize
-            return posA - posB
-        })
-
-        const mine = sortedMines[this.currentAssignIndex]
-        const target = sortedTargets[this.currentAssignIndex]
-        const targetOffset = (target + this.orbitOffset) % this.orbitPathSize
         
-        mine.updateTarget(targetOffset)
+        // ВЫЧИСЛЯЕМ ОПТИМАЛЬНОЕ СОПОСТАВЛЕНИЕ ОДИН РАЗ
+        this.optimalAssignment = this.findOptimalAssignment()
+    }
+    
+    findOptimalAssignment() {
+        const assignment = []
+        const usedTargets = new Set()
+        
+        // Для каждой мины находим ближайшую свободную цель
+        for (const mine of this.mines) {
+            let bestTarget = null
+            let bestDistance = Infinity
+            
+            for (const target of this.basePointIndexes) {
+                if (usedTargets.has(target)) continue
+                
+                const dist = this.circularDistance(mine.orbitIndex, target)
+                if (dist < bestDistance) {
+                    bestDistance = dist
+                    bestTarget = target
+                }
+            }
+            
+            if (bestTarget !== null) {
+                assignment.push({ mine, target: bestTarget })
+                usedTargets.add(bestTarget)
+            }
+        }
+        
+        return assignment
+    }
+    
+    circularDistance(a, b) {
+        const direct = Math.abs(a - b)
+        const wrap = this.orbitPathSize - direct
+        return Math.min(direct, wrap)
+    }
+    
+    assignTargets() {
+        if (!this.optimalAssignment || this.currentAssignIndex >= this.optimalAssignment.length) {
+            this.currentAssignIndex = 0
+            return
+        }
+        
+        const pair = this.optimalAssignment[this.currentAssignIndex]
+        const targetOffset = (pair.target + this.orbitOffset) % this.orbitPathSize
+        pair.mine.updateTarget(targetOffset)
         this.currentAssignIndex++
     }
 
     tick(time) {
         this.orbitOffset = (this.orbitOffset + this.orbitSpeed * time.deltaMS) % this.orbitPathSize
-        if (this.currentAssignIndex < this.mines.length) this.assignTargets()
+        if (this.currentAssignIndex < this.optimalAssignment.length) this.assignTargets()
     }
 
     kill() {
